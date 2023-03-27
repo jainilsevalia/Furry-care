@@ -18,16 +18,20 @@ import Image from "next/image";
 import { Box, Button } from "@mui/material";
 
 export default function Store() {
-  const cards = Array.from(Array(5).keys()); // creates an array of length 5
+  const cards = Array.from(Array(8).keys()); // creates an array of length 5
 
   return (
     <>
       <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
         {cards.map((card) => (
-          <Card key={card} sx={{ maxWidth: 300, margin: "25px" }}>
+          <Card key={card}
+           sx={{ maxWidth: 300, margin: "25px", border: "1px solid #eee", "border-radius": "12px",  
+  "box-shadow": "rgba(55, 84, 170, 0.50) 0 5px 20px",}}
+           >
             <CardHeader
+              sx={{ "borderBottom":"1px solid blue" , "margin-bottom":"5px"}}
               avatar={
-                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                <Avatar sx={{ bgcolor: red[500],}} aria-label="recipe">
                   R
                 </Avatar>
               }
@@ -39,7 +43,9 @@ export default function Store() {
               title="Dog food"
               subheader="September 14, 2016"
             />
-            <Image src={dogfood} alt="dogfood" width={200} height={200} />
+            <div style={{display:"flex", justifyContent:"center", marginTop:"10px", }}>
+              <Image src={dogfood} alt="dogfood" width={200} height={200}/>
+            </div>
             <CardContent>
               <Typography variant="body2" color="text.secondary">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -48,14 +54,18 @@ export default function Store() {
                 dignissimos, soluta minima! Pariatur, vero voluptatem?
               </Typography>
             </CardContent>
-            <CardActions disableSpacing>
+            <CardActions disableSpacing sx={{display:"flex", flexDirection:"row", justifyContent:"space-around"}}>
+              {/* <div style={{display:"flex", justifyContent:"flex-start"}}>
               <IconButton aria-label="add to favorites">
                 <FavoriteIcon />
               </IconButton>
               <IconButton aria-label="share">
                 <ShareIcon />
               </IconButton>
-              <Button variant="outlined">Order</Button>
+              </div> */}
+              <div style={{display:"flex", justifyContent:"flex-end"}}>
+              <Button  variant="outlined">Order</Button>
+            </div>
             </CardActions>
           </Card>
         ))}
