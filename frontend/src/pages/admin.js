@@ -52,12 +52,12 @@ const admin = () => {
 	}, [count]);
 
 	return (
-		<div style={{ backgroundColour: 'black', height: '100vh' }}>
+		<div style={{ backgroundColour: '#F5F5F7', height: '100vh' }}>
 			{' '}
 			<Box
 				sx={{
 					width: '100%',
-					height: '100px',
+					height: '70px',
 					backgroundColor: '#1976d2',
 					display: 'flex',
 					alignItems: 'center',
@@ -65,6 +65,7 @@ const admin = () => {
 				}}
 			>
 				<Image
+					style={{ marginLeft: '20px' }}
 					src={furrycare}
 					alt="Furry Care"
 					width={150}
@@ -74,37 +75,11 @@ const admin = () => {
 			<Box
 				sx={{
 					display: 'grid',
-					gridTemplateColumns: '1fr 30%',
+					gridTemplateRows: ' 55% 1fr',
 					backgroundColor: '#f5f5f7',
 					height: '100vh',
 				}}
 			>
-				<Box>
-					<h2
-						sx={{
-							marginLeft: '15px',
-						}}
-					>
-						List of Registered Vets
-					</h2>
-					{vets.map((vet) => (
-						<div
-							style={{
-								borderRadius: '15px',
-								backgroundColor: 'white',
-								padding: '20px',
-								marginBottom: '20px',
-								boxShadow: '1px 2px 8px rgba(55, 84, 170, 0.16)',
-								width: '20vw',
-								marginLeft: '50px',
-							}}
-							key={vet._id}
-						>
-							<p>{vet.name}</p>
-							<p>{vet.email}</p>
-						</div>
-					))}
-				</Box>
 				<Box
 					sx={{
 						display: 'flex',
@@ -115,7 +90,9 @@ const admin = () => {
 						borderRadius: '20px',
 						width: '20vw',
 						height: 'fit-content',
-						marginTop: '50px',
+						marginTop: '30px',
+						marginLeft: 'auto',
+						marginRight: 'auto',
 						boxShadow: '1px 2px 8px rgba(55, 84, 170, 0.16)',
 					}}
 				>
@@ -162,6 +139,41 @@ const admin = () => {
 					>
 						Add Vet
 					</Button>
+				</Box>
+
+				<Box sx={{}}>
+					<h2
+						style={{
+							marginLeft: '15px',
+						}}
+					>
+						List of Registered Vets
+					</h2>
+					<div
+						style={{
+							display: 'grid',
+							gridTemplateColumns: '1fr 1fr 1fr 1fr',
+							gap: '20px',
+							marginLeft: '10px',
+							width: '100vw',
+						}}
+					>
+						{vets.map((vet) => (
+							<div
+								style={{
+									width: '19vw',
+									borderRadius: '15px',
+									backgroundColor: 'white',
+									padding: '20px',
+									boxShadow: '1px 2px 8px rgba(55, 84, 170, 0.16)',
+								}}
+								key={vet._id}
+							>
+								<p>{vet.name}</p>
+								<p>{vet.email}</p>
+							</div>
+						))}
+					</div>
 				</Box>
 			</Box>
 		</div>
