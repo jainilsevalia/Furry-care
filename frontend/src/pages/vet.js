@@ -177,9 +177,6 @@ const vet = () => {
               </AccordionSummary>
               <AccordionDetails sx={{ backgroundColor: "#f5f5f5" }}>
                 <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                  eget.
                   <div>
                     {pet.medicalHistory ? (
                       pet.medicalHistory.map((history) => (
