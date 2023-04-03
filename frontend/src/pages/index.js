@@ -115,15 +115,6 @@ const index = () => {
               <h1>Login</h1>{" "}
               <TextField
                 id="standard-basic"
-                label="Name"
-                variant="standard"
-                onChange={(e) => setName(e.target.value)}
-                sx={{
-                  marginTop: "10px",
-                }}
-              />
-              <TextField
-                id="standard-basic"
                 label="Email"
                 variant="standard"
                 onChange={(e) => setEmail(e.target.value)}
