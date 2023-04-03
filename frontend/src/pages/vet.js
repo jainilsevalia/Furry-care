@@ -17,8 +17,7 @@ const vet = () => {
   const [appointments, setAppointments] = useState([]);
   const [filteredAppointments, setFilteredAppointments] = useState([]);
   const [note, setNote] = useState("");
-  const [pet, setPet] = useState({});
-  // const [medicalHistory, setMedicalHistory] = useState([]);
+  const [pet, setPet] = useState([]);
 
   const getAppointments = async () => {
     try {
@@ -72,7 +71,6 @@ const vet = () => {
   useEffect(() => {
     getAppointments();
   }, []);
-
   const filterAppointmentsByPet = (petName) => {
     const filteredAppointments = appointments.filter((appointment) =>
       appointment.petName.toLowerCase().includes(petName.toLowerCase())
@@ -98,15 +96,27 @@ const vet = () => {
           justifyContent: "start",
         }}
       >
-        <Image src={furrycare} alt="Furry Care" width={150} height={150} />
+        <Image
+          src={furrycare}
+          sx={{ margin: "24px" }}
+          alt="Furry Care"
+          width={150}
+          height={150}
+        />
       </Box>
       <Box
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          borderRadius: "12px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
+        <h1>Search Pet :</h1>
         <TextField
           sx={{ margin: "1rem" }}
           id="outlined-basic"
-          label="Outlined"
+          label="Search Pet Info ..."
           variant="outlined"
           value={input}
           onChange={handleInputChange}
@@ -114,6 +124,7 @@ const vet = () => {
       </Box>
       <Box
         sx={{
+          borderRadius: "12px",
           padding: "1rem",
           display: "flex",
           flexDirection: "column",
@@ -124,7 +135,9 @@ const vet = () => {
         {filteredAppointments.map((appointment) => (
           <Box
             sx={{
-              border: "1px solid black",
+              boxShadow: "rgba(55, 84, 170, 0.50) 0 5px 20px",
+              borderRadius: "12px",
+              // border: "1px solid black",
               padding: "10px",
               margin: "10px",
               display: "flex",
@@ -137,13 +150,23 @@ const vet = () => {
             <p>Time: {appointment.time}</p>
             <Accordion onClick={() => getPet(appointment.petId)}>
               <AccordionSummary
+                style={{
+                  backgroundColor: "#f5f5f5",
+                  fontWeight: "500",
+                  borderBottom: "1px solid black",
+                  // borderRadius: "12px",
+                }}
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography>Accordion 1</Typography>
+                <Typography
+                  style={{ backgroundColor: "#f5f5f5", fontWeight: "500" }}
+                >
+                  Medical History
+                </Typography>
               </AccordionSummary>
-              <AccordionDetails>
+              <AccordionDetails sx={{ backgroundColor: "#f5f5f5" }}>
                 <Typography>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
@@ -153,7 +176,10 @@ const vet = () => {
                       pet.medicalHistory.map((history) => (
                         <div
                           style={{
-                            border: "1px solid black",
+                            backgroundColor: "white",
+                            boxShadow: "rgba(55, 84, 170, 0.16) 1 2px 8px",
+                            borderRadius: "12px",
+                            border: "1px solid #f5f5f5",
                             margin: "10px",
                             padding: "10px",
                           }}
@@ -170,7 +196,9 @@ const vet = () => {
                 </Typography>
               </AccordionDetails>
             </Accordion>
+            <br />
             <TextField
+              sx={{ backgroundColor: "white" }}
               id="outlined-basic"
               label="Description"
               variant="outlined"

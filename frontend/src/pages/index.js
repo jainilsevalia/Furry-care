@@ -102,12 +102,6 @@ const index = () => {
           {" "}
           <TextField
             id="standard-basic"
-            label="Name"
-            variant="standard"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <TextField
-            id="standard-basic"
             label="Email"
             variant="standard"
             onChange={(e) => setEmail(e.target.value)}
@@ -124,7 +118,7 @@ const index = () => {
             variant="contained"
             onClick={login}
           >
-            LogIn
+            Log In
           </Button>
         </Box>{" "}
         <Box
@@ -163,7 +157,7 @@ const index = () => {
             variant="contained"
             onClick={signup}
           >
-            SignUp
+            Sign Up
           </Button>
         </Box>
       </Box>
