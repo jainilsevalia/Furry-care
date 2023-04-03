@@ -10,8 +10,10 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useRouter } from "next/router";
 
 const vet = () => {
+  const navigate = useRouter();
   const [data, setData] = useContext(DataContext);
   const [input, setInput] = useState("");
   const [appointments, setAppointments] = useState([]);
@@ -21,7 +23,9 @@ const vet = () => {
 
   const getAppointments = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/appointments");
+      const response = await axios.get(
+        "https://furrycareserver.onrender.com/appointments"
+      );
       console.log(response.data);
       setAppointments(response.data.appointments);
       setFilteredAppointments(response.data.appointments);
@@ -32,7 +36,9 @@ const vet = () => {
 
   const getPet = async (petId) => {
     try {
-      const response = await axios.get(`http://localhost:3000/pets/${petId}`);
+      const response = await axios.get(
+        `https://furrycareserver.onrender.com/pets/${petId}`
+      );
       console.log(response.data.pet);
       setPet(response.data.pet);
     } catch (error) {
@@ -49,7 +55,7 @@ const vet = () => {
 
     try {
       const response = await axios.patch(
-        `http://localhost:3000/pets/${petId}`,
+        `https://furrycareserver.onrender.com/pets/${petId}`,
         {
           date: new Date(Date.now()).toLocaleString(),
           medicalNote: note,
@@ -67,7 +73,9 @@ const vet = () => {
       console.log(error);
     }
   };
-
+  const handleLogoClick = () => {
+    navigate.push("/");
+  };
   useEffect(() => {
     getAppointments();
   }, []);
@@ -102,6 +110,7 @@ const vet = () => {
           alt="Furry Care"
           width={150}
           height={50}
+          onClick={handleLogoClick}
         />
       </Box>
       <Box
