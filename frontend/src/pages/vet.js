@@ -89,7 +89,7 @@ const vet = () => {
       <Box
         sx={{
           width: "100%",
-          height: "100px",
+          height: "75px",
           backgroundColor: "#1976d2",
           display: "flex",
           alignItems: "center",
@@ -101,7 +101,7 @@ const vet = () => {
           sx={{ margin: "24px" }}
           alt="Furry Care"
           width={150}
-          height={150}
+          height={50}
         />
       </Box>
       <Box
