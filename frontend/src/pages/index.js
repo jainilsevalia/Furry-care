@@ -60,153 +60,108 @@ const index = () => {
   };
 
   return (
-    <>
-      <div
-        style={{
-          backgroundColor: "#F5F5F7",
-          height: "100vh",
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {/* <NavbarComponent />{" "} */}
+      <Box
+        sx={{
+          width: "100%",
+          height: "100px",
+          backgroundColor: "#1976d2",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        <div
-          style={{
+        <Image src={furrycare} alt="Furry Care" width={150} height={150} />
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-around",
+          width: "100%",
+        }}
+      >
+        <Box
+          sx={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
+            height: "100%",
+            width: "auto",
+            marginTop: "100px",
           }}
         >
-          {/* <NavbarComponent />{" "} */}
-          <Box
-            sx={{
-              width: "100%",
-              height: "70px",
-              backgroundColor: "#1976d2",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
+          {" "}
+          <TextField
+            id="standard-basic"
+            label="Email"
+            variant="standard"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            id="standard-basic"
+            label="Password"
+            variant="standard"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button
+            sx={{ width: "100%", marginTop: "1rem" }}
+            variant="contained"
+            onClick={login}
           >
-            <Image src={furrycare} alt="Furry Care" width={150} height={150} />
-          </Box>
-
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-around",
-              width: "100%",
-            }}
+            Log In
+          </Button>
+        </Box>{" "}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+            width: "auto",
+            marginTop: "100px",
+          }}
+        >
+          {" "}
+          <TextField
+            id="standard-basic"
+            label="Name"
+            variant="standard"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <TextField
+            id="standard-basic"
+            label="Email"
+            variant="standard"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            id="standard-basic"
+            label="Password"
+            variant="standard"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button
+            sx={{ width: "100%", marginTop: "1rem" }}
+            variant="contained"
+            onClick={signup}
           >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "100%",
-                width: "auto",
-                marginTop: "100px",
-                backgroundColor: "#FFFFFF",
-                padding: "60px",
-                paddingTop: "30px",
-                boxShadow: "1px 2px 8px rgba(55,84,170,0.16)",
-                borderRadius: "12px",
-              }}
-            >
-              <h1>Login</h1>{" "}
-              <TextField
-                id="standard-basic"
-                label="Name"
-                variant="standard"
-                onChange={(e) => setName(e.target.value)}
-                sx={{
-                  marginTop: "10px",
-                }}
-              />
-              <TextField
-                id="standard-basic"
-                label="Email"
-                variant="standard"
-                onChange={(e) => setEmail(e.target.value)}
-                sx={{
-                  marginTop: "23px",
-                }}
-              />
-              <TextField
-                id="standard-basic"
-                label="Password"
-                variant="standard"
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-                sx={{
-                  marginTop: "23px",
-                }}
-              />
-              <Button
-                sx={{ width: "100%", marginTop: "3rem" }}
-                variant="contained"
-                onClick={login}
-              >
-                LogIn
-              </Button>
-            </Box>{" "}
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "100%",
-                width: "auto",
-                marginTop: "100px",
-                backgroundColor: "#FFFFFF",
-                padding: "60px",
-                paddingTop: "30px",
-
-                boxShadow: "1px 2px 8px rgba(55,84,170,0.16)",
-                borderRadius: "12px",
-              }}
-            >
-              <h1>Registration</h1>{" "}
-              <TextField
-                id="standard-basic"
-                label="Name"
-                variant="standard"
-                onChange={(e) => setName(e.target.value)}
-                sx={{
-                  marginTop: "10px",
-                }}
-              />
-              <TextField
-                id="standard-basic"
-                label="Email"
-                variant="standard"
-                onChange={(e) => setEmail(e.target.value)}
-                sx={{
-                  marginTop: "23px",
-                }}
-              />
-              <TextField
-                id="standard-basic"
-                label="Password"
-                variant="standard"
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-                sx={{
-                  marginTop: "23px",
-                }}
-              />
-              <Button
-                sx={{ width: "100%", marginTop: "3rem" }}
-                variant="contained"
-                onClick={signup}
-              >
-                SignUp
-              </Button>
-            </Box>
-          </Box>
-        </div>
-      </div>
-    </>
+            Sign Up
+          </Button>
+        </Box>
+      </Box>
+    </div>
   );
 };
 
