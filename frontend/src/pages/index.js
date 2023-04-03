@@ -18,11 +18,14 @@ const index = () => {
 
   const login = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/users/login", {
-        email: Email,
-        password: Password,
-        name: Name,
-      });
+      const res = await axios.post(
+        "https://furrycareserver.onrender.com/users/login",
+        {
+          email: Email,
+          password: Password,
+          name: Name,
+        }
+      );
       console.log(res.data);
       const user = res.data.user;
       localStorage.setItem("token", res.data.token);
@@ -48,11 +51,14 @@ const index = () => {
 
   const signup = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/users/signup", {
-        email: Email,
-        password: Password,
-        name: Name,
-      });
+      const res = await axios.post(
+        "https://furrycareserver.onrender.com/users/signup",
+        {
+          email: Email,
+          password: Password,
+          name: Name,
+        }
+      );
       console.log(res);
     } catch (error) {
       console.log(error);

@@ -39,9 +39,16 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar  position="static">
-      <Container  maxWidth="xl">
-        <Toolbar sx={{height:"50px", display:"flex", justifyContent:"space-between"}} disableGutters>
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar
+          sx={{
+            height: "50px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+          disableGutters
+        >
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
 
           <Typography

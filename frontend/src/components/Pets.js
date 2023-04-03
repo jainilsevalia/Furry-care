@@ -95,11 +95,15 @@ const pets = ({ pets, onChildData }) => {
 
     console.log(formData);
     try {
-      const res = await axios.post("http://localhost:3000/pets", formData, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await axios.post(
+        "https://furrycareserver.onrender.com/pets",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       console.log(res.data);
       res.status === 200 && count++;
       onChildData(Date.now());
