@@ -75,7 +75,7 @@ const admin = () => {
 			<Box
 				sx={{
 					display: 'grid',
-					gridTemplateRows: ' 55% 1fr',
+					gridTemplateRows: ' 15% 1fr',
 					backgroundColor: '#f5f5f7',
 					height: '100vh',
 				}}
@@ -83,12 +83,12 @@ const admin = () => {
 				<Box
 					sx={{
 						display: 'flex',
-						flexDirection: 'column',
-						justifyContent: 'center',
+						flexDirection: 'Row',
+						justifyContent: 'flex-start',
 						alignItems: 'center',
 						backgroundColor: 'white',
 						borderRadius: '20px',
-						width: '20vw',
+						width: '95vw',
 						height: 'fit-content',
 						marginTop: '30px',
 						marginLeft: 'auto',
@@ -97,8 +97,9 @@ const admin = () => {
 					}}
 				>
 					<h2
-						sx={{
-							margin: '15px',
+						style={{
+							marginLeft: '35px',
+							marginRight: '200px',
 						}}
 					>
 						Add New Vet to System
@@ -153,7 +154,7 @@ const admin = () => {
 						style={{
 							display: 'grid',
 							gridTemplateColumns: '1fr 1fr 1fr 1fr',
-							gap: '20px',
+							gap: '15px',
 							marginLeft: '10px',
 							width: '100vw',
 						}}
@@ -161,7 +162,6 @@ const admin = () => {
 						{vets.map((vet) => (
 							<div
 								style={{
-									width: '19vw',
 									borderRadius: '15px',
 									backgroundColor: 'white',
 									padding: '20px',

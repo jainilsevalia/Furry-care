@@ -1,7 +1,12 @@
-import { Box, Button } from "@mui/material";
+import { Avatar, Box, Button, Card } from "@mui/material";
 import React, { useState } from "react";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import avatar0 from "../images/User_1.png"
+import avatar1 from "../images/User_2.png"
+import avatar2 from "../images/User_3.png"
+import avatar3 from "../images/User_4.png"
+import avatar4 from "../images/User_5.png"
+import Image from "next/image";
 
 const Caretakers = ({ caretakers }) => {
   const [open, setOpen] = useState(false);
@@ -27,25 +32,43 @@ const Caretakers = ({ caretakers }) => {
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
-    p: 4,
+    p: 1,
   };
 
-  console.log(caretakers);
+  console.log();
+
   return (
-    <div>
-      {caretakers.map((caretaker) => (
-        <Box
+    <Box sx={{
+      padding: "15px",
+      display: 'grid',
+      gridTemplateColumns: 'repeat(4, 1fr)',
+    }}>
+      {caretakers.map((caretaker, i) => (
+        <Card variant="outlined"
           sx={{
-            border: "2px solid black",
-            margin: "10px",
-            padding: "10px",
+            alignItems: "center",
+            justifyItems: "center",
+            justifyContent: "space-between",
+            boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+            backgroundColor: "#fafafa",
+            borderRadius: "10px",
+            width: "300px",
+            display: "flex",
+            flexDirection: "column",
+            margin: "5px",
+            paddingInline: "25px",
+            paddingBlock: "20px"
           }}
           key={caretaker._id}
         >
-          <h4>Name: {caretaker.name}</h4>
-          <p>About: {caretaker.about}</p>
-          <p>Rate {caretaker.rate}</p>
-          <Button onClick={handleOpen} variant="contained">
+          
+          <Image src={i === 0 ? avatar0 : i === 1 ? avatar1 : i === 2 ? avatar2 : i === 3 ? avatar3 : avatar4} width={120} height={120}></Image>
+          
+          <h2>{caretaker.name}</h2>
+          <p>About</p>
+          <p>{caretaker.about}</p>
+          <h4>Price: {caretaker.rate}$/hour</h4>
+          <Button sx={{width: "250px"}} onClick={handleOpen} variant="contained">
             Hire
           </Button>{" "}
           <Modal
@@ -74,9 +97,9 @@ const Caretakers = ({ caretakers }) => {
               </Box>
             </Box>
           </Modal>
-        </Box>
+        </Card>
       ))}
-    </div>
+    </Box>
   );
 };
 
