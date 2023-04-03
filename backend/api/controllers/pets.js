@@ -31,6 +31,7 @@ const createPet = asyncWrapper(async (req, res) => {
 //get pets
 const getPets = asyncWrapper(async (req, res) => {
   const pets = await Pet.find();
+  console.log(pets);
   if (pets === null) {
     res.status(404).json({ message: "pet not found" });
   }
