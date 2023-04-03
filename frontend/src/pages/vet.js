@@ -151,6 +151,7 @@ const vet = () => {
               margin: "10px",
               display: "flex",
               flexDirection: "column",
+              width: "500px",
             }}
             key={appointment._id}
           >
