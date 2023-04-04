@@ -41,7 +41,14 @@ function ResponsiveAppBar() {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar
+          sx={{
+            height: "50px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+          disableGutters
+        >
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
 
           <Typography
@@ -59,7 +66,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            <Image src={furrycare} alt="Furry Care" width={150} height={150} />
+            <Image src={furrycare} alt="Furry Care" width={150} height={70} />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

@@ -10,19 +10,22 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useRouter } from "next/router";
 
 const vet = () => {
+  const navigate = useRouter();
   const [data, setData] = useContext(DataContext);
   const [input, setInput] = useState("");
   const [appointments, setAppointments] = useState([]);
   const [filteredAppointments, setFilteredAppointments] = useState([]);
   const [note, setNote] = useState("");
-  const [pet, setPet] = useState({});
-  // const [medicalHistory, setMedicalHistory] = useState([]);
+  const [pet, setPet] = useState([]);
 
   const getAppointments = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/appointments");
+      const response = await axios.get(
+        "https://furrycareserver.onrender.com/appointments"
+      );
       console.log(response.data);
       setAppointments(response.data.appointments);
       setFilteredAppointments(response.data.appointments);
@@ -33,7 +36,9 @@ const vet = () => {
 
   const getPet = async (petId) => {
     try {
-      const response = await axios.get(`http://localhost:3000/pets/${petId}`);
+      const response = await axios.get(
+        `https://furrycareserver.onrender.com/pets/${petId}`
+      );
       console.log(response.data.pet);
       setPet(response.data.pet);
     } catch (error) {
@@ -50,7 +55,7 @@ const vet = () => {
 
     try {
       const response = await axios.patch(
-        `http://localhost:3000/pets/${petId}`,
+        `https://furrycareserver.onrender.com/pets/${petId}`,
         {
           date: new Date(Date.now()).toLocaleString(),
           medicalNote: note,
@@ -68,11 +73,12 @@ const vet = () => {
       console.log(error);
     }
   };
-
+  const handleLogoClick = () => {
+    navigate.push("/");
+  };
   useEffect(() => {
     getAppointments();
   }, []);
-
   const filterAppointmentsByPet = (petName) => {
     const filteredAppointments = appointments.filter((appointment) =>
       appointment.petName.toLowerCase().includes(petName.toLowerCase())
@@ -91,22 +97,35 @@ const vet = () => {
       <Box
         sx={{
           width: "100%",
-          height: "100px",
+          height: "75px",
           backgroundColor: "#1976d2",
           display: "flex",
           alignItems: "center",
           justifyContent: "start",
         }}
       >
-        <Image src={furrycare} alt="Furry Care" width={150} height={150} />
+        <Image
+          src={furrycare}
+          sx={{ margin: "24px" }}
+          alt="Furry Care"
+          width={150}
+          height={50}
+          onClick={handleLogoClick}
+        />
       </Box>
       <Box
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          borderRadius: "12px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
+        <h1>Search Pet :</h1>
         <TextField
           sx={{ margin: "1rem" }}
           id="outlined-basic"
-          label="Outlined"
+          label="Search Pet Info ..."
           variant="outlined"
           value={input}
           onChange={handleInputChange}
@@ -114,6 +133,7 @@ const vet = () => {
       </Box>
       <Box
         sx={{
+          borderRadius: "12px",
           padding: "1rem",
           display: "flex",
           flexDirection: "column",
@@ -124,11 +144,14 @@ const vet = () => {
         {filteredAppointments.map((appointment) => (
           <Box
             sx={{
-              border: "1px solid black",
+              boxShadow: "rgba(55, 84, 170, 0.50) 0 5px 20px",
+              borderRadius: "12px",
+              // border: "1px solid black",
               padding: "10px",
               margin: "10px",
               display: "flex",
               flexDirection: "column",
+              width: "500px",
             }}
             key={appointment._id}
           >
@@ -137,23 +160,33 @@ const vet = () => {
             <p>Time: {appointment.time}</p>
             <Accordion onClick={() => getPet(appointment.petId)}>
               <AccordionSummary
+                style={{
+                  backgroundColor: "#f5f5f5",
+                  fontWeight: "500",
+                  borderBottom: "1px solid black",
+                  // borderRadius: "12px",
+                }}
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography>Accordion 1</Typography>
+                <Typography
+                  style={{ backgroundColor: "#f5f5f5", fontWeight: "500" }}
+                >
+                  Medical History
+                </Typography>
               </AccordionSummary>
-              <AccordionDetails>
+              <AccordionDetails sx={{ backgroundColor: "#f5f5f5" }}>
                 <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                  eget.
                   <div>
                     {pet.medicalHistory ? (
                       pet.medicalHistory.map((history) => (
                         <div
                           style={{
-                            border: "1px solid black",
+                            backgroundColor: "white",
+                            boxShadow: "rgba(55, 84, 170, 0.16) 1 2px 8px",
+                            borderRadius: "12px",
+                            border: "1px solid #f5f5f5",
                             margin: "10px",
                             padding: "10px",
                           }}
@@ -170,7 +203,9 @@ const vet = () => {
                 </Typography>
               </AccordionDetails>
             </Accordion>
+            <br />
             <TextField
+              sx={{ backgroundColor: "white" }}
               id="outlined-basic"
               label="Description"
               variant="outlined"
